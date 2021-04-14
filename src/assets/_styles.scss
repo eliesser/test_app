@@ -1,0 +1,43 @@
+.m-auto{
+  margin: auto;
+}
+
+.center{
+  text-align: center !important;
+}
+
+.p-0{
+  padding: 0px;
+}
+
+.top-40{
+  margin-top: 40px !important;
+}
+
+.px-20{
+  padding-bottom: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.px-30{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.text-bold{
+  font-weight: bold;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+ion-input.placeholder-error {
+  --placeholder-color: #9b2a39;
+  --placeholder-opacity: 1;
+}
+
+ion-icon.error{
+  -color: #9b2a39;
+}
