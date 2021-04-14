@@ -20,6 +20,18 @@ export class LoginPage implements OnInit {
 
   form: FormGroup;
 
+  get email(): AbstractControl {
+    return this.form.get('email');
+  }
+
+  get password(): AbstractControl {
+    return this.form.get('password');
+  }
+
+  get remember(): AbstractControl {
+    return this.form.get('remember');
+  }
+
   constructor(private fb: FormBuilder, private uiService: UiService) {}
 
   ngOnInit() {
@@ -79,17 +91,5 @@ export class LoginPage implements OnInit {
 
   campoAccionado(input: AbstractControl): boolean {
     return (input.dirty || input.touched) && input.invalid;
-  }
-
-  get email(): AbstractControl {
-    return this.form.get('email');
-  }
-
-  get password(): AbstractControl {
-    return this.form.get('password');
-  }
-
-  get remember(): AbstractControl {
-    return this.form.get('remember');
   }
 }
