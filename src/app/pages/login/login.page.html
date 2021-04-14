@@ -18,33 +18,33 @@
       <form [formGroup]="form">
         <ion-row class="form">
           <ion-col size="12" class="center no-padding">
-            <ion-list class="px-20">
+            <ion-list class="px-20" mode="md">
               <ion-item>
                 <ion-icon
                   name="person-outline"
                   slot="start"
-                  [color]="(email.dirty || email.touched) && email.invalid ? 'danger':''"
+                  [color]="campoAccionado(email) ? 'danger':''"
                 ></ion-icon>
                 <ion-input
                   name="email"
                   type="email"
                   formControlName="email"
                   placeholder="Email"
-                  [ngClass]="{ 'placeholder-error': (email.dirty || email.touched) && email.invalid }"
+                  [ngClass]="{ 'placeholder-error': campoAccionado(email) }"
                 ></ion-input>
               </ion-item>
               <ion-item>
                 <ion-icon
                   name="lock-closed-outline"
                   slot="start"
-                  [color]="(password.dirty || password.touched) && password.invalid ? 'danger':''"
+                  [color]="campoAccionado(password) ? 'danger':''"
                 ></ion-icon>
                 <ion-input
                   name="password"
                   type="password"
                   formControlName="password"
                   placeholder="Contraseña"
-                  [ngClass]="{ 'placeholder-error': (password.dirty || password.touched) && password.invalid }"
+                  [ngClass]="{ 'placeholder-error': campoAccionado(password) }"
                 ></ion-input>
               </ion-item>
               <ion-item lines="none">

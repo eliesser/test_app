@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 
 import { Usuario } from 'src/app/interfaces/interfaces';
 
@@ -25,8 +30,11 @@ export class LoginPage implements OnInit {
     });
   }
 
-  login() {
-    if (!this.validarCampo()) return false;
+  login(): boolean {
+    if (!this.form.valid) {
+      this.validarCampo();
+      return false;
+    }
 
     this.usuario.email = this.email.value;
     this.usuario.password = this.password.value;
@@ -62,25 +70,25 @@ export class LoginPage implements OnInit {
                   break;
               }
             }
-
-            return false;
           }
         }
       }
     }
-
-    return true;
   }
 
-  get email() {
+  campoAccionado(input: AbstractControl): boolean {
+    return (input.dirty || input.touched) && input.invalid;
+  }
+
+  get email(): AbstractControl {
     return this.form.get('email');
   }
 
-  get password() {
+  get password(): AbstractControl {
     return this.form.get('password');
   }
 
-  get remember() {
+  get remember(): AbstractControl {
     return this.form.get('remember');
   }
 }
