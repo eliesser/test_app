@@ -23,30 +23,58 @@
                 <ion-icon
                   name="person-outline"
                   slot="start"
-                  [color]="campoAccionado(email) ? 'danger':''"
+                  [color]="campoAccionado(form.controls.email) ? 'danger':''"
                 ></ion-icon>
                 <ion-input
                   name="email"
                   type="email"
                   formControlName="email"
                   placeholder="Email"
-                  [ngClass]="{ 'placeholder-error': campoAccionado(email) }"
+                  [ngClass]="{ 'placeholder-error': campoAccionado(form.controls.email) }"
                 ></ion-input>
               </ion-item>
+              <div>
+                <ion-label
+                  color="danger"
+                  *ngIf="campoAccionado(form.controls.email) && form.hasError('required', 'email')"
+                  >*Debe Ingresar el email.</ion-label
+                >
+              </div>
+              <div>
+                <ion-label
+                  color="danger"
+                  *ngIf="campoAccionado(form.controls.email) && form.hasError('email', 'email')"
+                  >*Debe ingresar un email válido.</ion-label
+                >
+              </div>
               <ion-item>
                 <ion-icon
                   name="lock-closed-outline"
                   slot="start"
-                  [color]="campoAccionado(password) ? 'danger':''"
+                  [color]="campoAccionado(form.controls.password) ? 'danger':''"
                 ></ion-icon>
                 <ion-input
                   name="password"
                   type="password"
                   formControlName="password"
                   placeholder="Contraseña"
-                  [ngClass]="{ 'placeholder-error': campoAccionado(password) }"
+                  [ngClass]="{ 'placeholder-error': campoAccionado(form.controls.password) }"
                 ></ion-input>
               </ion-item>
+              <div>
+                <ion-label
+                  color="danger"
+                  *ngIf="campoAccionado(form.controls.password) && form.hasError('required', 'password')"
+                  >*Debe Ingresar la contraseña.</ion-label
+                >
+              </div>
+              <div>
+                <ion-label
+                  color="danger"
+                  *ngIf="campoAccionado(form.controls.password) && form.hasError('minlength', 'password')"
+                  >*La contraseña debe tener minimo 5 caracteres.</ion-label
+                >
+              </div>
               <ion-item lines="none">
                 <ion-label slot="start" class="text-bold">Recordar</ion-label>
                 <ion-toggle

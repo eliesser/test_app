@@ -20,18 +20,6 @@ export class LoginPage implements OnInit {
 
   form: FormGroup;
 
-  get email(): AbstractControl {
-    return this.form.get('email');
-  }
-
-  get password(): AbstractControl {
-    return this.form.get('password');
-  }
-
-  get remember(): AbstractControl {
-    return this.form.get('remember');
-  }
-
   constructor(private fb: FormBuilder, private uiService: UiService) {}
 
   ngOnInit() {
@@ -44,49 +32,19 @@ export class LoginPage implements OnInit {
 
   login(): boolean {
     if (!this.form.valid) {
-      this.validarCampo();
+      this.form.markAllAsTouched();
       return false;
     }
 
-    this.usuario.email = this.email.value;
-    this.usuario.password = this.password.value;
-    this.usuario.remember = this.remember.value;
+    this.usuario.email = this.form.get('email').value;
+    this.usuario.password = this.form.get('password').value;
+    this.usuario.remember = this.form.get('remember').value;
 
     console.log('OK', this.usuario);
 
     this.form.reset();
 
     return true;
-  }
-
-  validarCampo() {
-    for (const key in this.form.controls) {
-      if (Object.prototype.hasOwnProperty.call(this.form.controls, key)) {
-        const element = this.form.controls[key];
-        if (element.errors) {
-          element.markAllAsTouched();
-          for (const error in element.errors) {
-            if (Object.prototype.hasOwnProperty.call(element.errors, error)) {
-              const valor = element.errors[error];
-              switch (error) {
-                case 'required':
-                  this.uiService.presentToast(`Debe ingresar el ${key}`);
-                  break;
-                case 'email':
-                  this.uiService.presentToast(`Debe ingresar un ${key} válido`);
-                  break;
-                case 'minlength':
-                  this.uiService.presentToast(
-                    `El ${key} debe tener minimo ${valor.requiredLength} caracteres`
-                  );
-                  break;
-              }
-            }
-          }
-          break;
-        }
-      }
-    }
   }
 
   campoAccionado(input: AbstractControl): boolean {
