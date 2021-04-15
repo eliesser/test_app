@@ -42,6 +42,8 @@ export class LoginPage implements OnInit {
 
     console.log('OK', this.usuario);
 
+    this.uiService.presentToast('Vadilación OK');
+
     this.form.reset();
 
     return true;
