@@ -33,7 +33,7 @@ describe('LoginPage', () => {
     const control = component.form.get('email');
     control.setValue('s');
 
-    expect(component.email.value.length).toBeGreaterThanOrEqual(1);
+    expect(control.value.length).toBeGreaterThanOrEqual(1);
   });
 
   it('El email debe ser un correo válido', () => {
@@ -41,7 +41,7 @@ describe('LoginPage', () => {
     control.setValue('freiteseliesser@hotmail.com');
 
     let valido = true;
-    if (component.email.errors && component.email.errors.email) {
+    if (control.errors && control.errors.email) {
       valido = false;
     }
 
@@ -52,14 +52,14 @@ describe('LoginPage', () => {
     const control = component.form.get('password');
     control.setValue('w');
 
-    expect(component.password.value.length).toBeGreaterThanOrEqual(1);
+    expect(control.value.length).toBeGreaterThanOrEqual(1);
   });
 
   it('La contraseña debe de ser igual o mayor a 5 caracteres', () => {
     const control = component.form.get('password');
     control.setValue('12345');
 
-    expect(component.password.value.length).toBeGreaterThanOrEqual(5);
+    expect(control.value.length).toBeGreaterThanOrEqual(5);
   });
 
   it('Envio corecto de email y password', () => {
@@ -84,7 +84,7 @@ describe('LoginPage', () => {
     expect(valor).toBeFalse();
   });
 
-  it('DDebe de llamar el metodo de presentToast si hay un error', () => {
+  it('Debe de llamar el metodo de presentToast si hay un error', () => {
     const espia = spyOn(servicio, 'presentToast').and.callFake(() => {
       return new Promise((resolve) => {
         resolve();
@@ -98,6 +98,6 @@ describe('LoginPage', () => {
 
     component.login();
 
-    expect(espia).toHaveBeenCalled;
+    expect(espia).toHaveBeenCalled();
   });
 });
