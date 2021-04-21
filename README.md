@@ -69,5 +69,5 @@ Para ejecutar las pruebas unitarias y poder visualizar las estadísticas, puede 
 ```bash
 $ ng test --code-coverage
 ```
-Este comando creara una carpeta en el directorio raíz del proyecto deben navegar a "coverage/ngv/" y abrir el archivo index.html, donde presentara las estadísticas de los test unitarios
+Este comando creara una carpeta en el directorio raíz del proyecto deben navegar a "coverage/ngv/" y abrir el archivo index.html, donde presentara las estadísticas de los test unitarios.
 
