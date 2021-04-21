@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  login(): boolean {
+  login() {
     if (!this.form.valid) {
       this.form.markAllAsTouched();
       return false;
@@ -43,10 +43,6 @@ export class LoginPage implements OnInit {
     console.log('OK', this.usuario);
 
     this.uiService.presentToast('Vadilación OK');
-
-    this.form.reset();
-
-    return true;
   }
 
   campoAccionado(input: AbstractControl): boolean {

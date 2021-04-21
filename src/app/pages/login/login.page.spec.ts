@@ -14,7 +14,7 @@ describe('LoginPage', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [LoginPage],
-        imports: [IonicModule.forRoot(), ReactiveFormsModule, FormsModule],
+        imports: [IonicModule, ReactiveFormsModule, FormsModule],
       }).compileComponents();
 
       fixture = TestBed.createComponent(LoginPage);
@@ -62,35 +62,18 @@ describe('LoginPage', () => {
     expect(control.value.length).toBeGreaterThanOrEqual(5);
   });
 
-  it('Envio corecto de email y password', () => {
+  it('Envio email y password', () => {
     const email = component.form.get('email');
     email.setValue('freiteseliesser@hotmail.com');
     const password = component.form.get('password');
     password.setValue('12345');
 
-    const valor = component.login();
+    component.login();
 
-    expect(valor).toBeTrue();
+    expect(component.form.valid).toBeTrue();
   });
 
-  it('Envio corecto de email o password erroneo', () => {
-    const email = component.form.get('email');
-    email.setValue('freiteseliesser@hotmail.com');
-    const password = component.form.get('password');
-    password.setValue('');
-
-    const valor = component.login();
-
-    expect(valor).toBeFalse();
-  });
-
-  it('Debe de llamar el metodo de presentToast si hay un error', () => {
-    const espia = spyOn(servicio, 'presentToast').and.callFake(() => {
-      return new Promise((resolve) => {
-        resolve();
-      });
-    });
-
+  it('Envio corecto o password erroneo', () => {
     const email = component.form.get('email');
     email.setValue('freiteseliesser@hotmail.com');
     const password = component.form.get('password');
@@ -98,6 +81,6 @@ describe('LoginPage', () => {
 
     component.login();
 
-    expect(espia).toHaveBeenCalled();
+    expect(component.form.valid).toBeFalse();
   });
 });

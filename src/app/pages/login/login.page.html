@@ -15,79 +15,91 @@
         </ion-col>
       </ion-row>
 
-      <form [formGroup]="form">
+      <form [formGroup]="form" (ngSubmit)="login()">
         <ion-row class="form">
           <ion-col size="12" class="center no-padding">
             <ion-list class="px-20" mode="md">
+
               <ion-item>
                 <ion-icon
                   name="person-outline"
                   slot="start"
-                  [color]="campoAccionado(form.controls.email) ? 'danger':''"
-                ></ion-icon>
+                  [color]="campoAccionado(form.controls.email) ? 'danger':''">
+                </ion-icon>
                 <ion-input
                   name="email"
                   type="email"
                   formControlName="email"
                   placeholder="Email"
-                  [ngClass]="{ 'placeholder-error': campoAccionado(form.controls.email) }"
-                ></ion-input>
+                  [ngClass]="{ 'placeholder-error': campoAccionado(form.controls.email) }">
+                </ion-input>
               </ion-item>
+
               <div>
                 <ion-label
                   color="danger"
-                  *ngIf="campoAccionado(form.controls.email) && form.hasError('required', 'email')"
-                  >*Debe Ingresar el email.</ion-label
-                >
+                  *ngIf="campoAccionado(form.controls.email) && form.hasError('required', 'email')">
+                  *Debe Ingresar el email.
+                </ion-label>
               </div>
+
               <div>
                 <ion-label
                   color="danger"
-                  *ngIf="campoAccionado(form.controls.email) && form.hasError('email', 'email')"
-                  >*Debe ingresar un email válido.</ion-label
-                >
+                  *ngIf="campoAccionado(form.controls.email) && form.hasError('email', 'email')">
+                  *Debe ingresar un email válido.
+                </ion-label>
               </div>
+
               <ion-item>
                 <ion-icon
                   name="lock-closed-outline"
                   slot="start"
-                  [color]="campoAccionado(form.controls.password) ? 'danger':''"
-                ></ion-icon>
+                  [color]="campoAccionado(form.controls.password) ? 'danger':''">
+                </ion-icon>
+
                 <ion-input
                   name="password"
                   type="password"
                   formControlName="password"
                   placeholder="Contraseña"
-                  [ngClass]="{ 'placeholder-error': campoAccionado(form.controls.password) }"
-                ></ion-input>
+                  [ngClass]="{ 'placeholder-error': campoAccionado(form.controls.password) }">
+                </ion-input>
               </ion-item>
+
               <div>
                 <ion-label
                   color="danger"
-                  *ngIf="campoAccionado(form.controls.password) && form.hasError('required', 'password')"
-                  >*Debe Ingresar la contraseña.</ion-label
-                >
+                  *ngIf="campoAccionado(form.controls.password) && form.hasError('required', 'password')">
+                  *Debe Ingresar la contraseña.
+                </ion-label>
               </div>
+
               <div>
                 <ion-label
                   color="danger"
-                  *ngIf="campoAccionado(form.controls.password) && form.hasError('minlength', 'password')"
-                  >*La contraseña debe tener minimo 5 caracteres.</ion-label
-                >
+                  *ngIf="campoAccionado(form.controls.password) && form.hasError('minlength', 'password')">
+                  *La contraseña debe tener minimo 5 caracteres.
+                </ion-label>
               </div>
+
               <ion-item lines="none">
                 <ion-label slot="start" class="text-bold">Recordar</ion-label>
                 <ion-toggle
                   slot="end"
                   name="remember"
-                  formControlName="remember"
-                ></ion-toggle>
+                  formControlName="remember">
+                </ion-toggle>
               </ion-item>
+
             </ion-list>
 
-            <ion-button type="button" (click)="login()" class="btn-login"
-              >Acceder</ion-button
-            >
+            <ion-button
+              type="submit"
+              class="btn-login">
+              Acceder
+            </ion-button>
+
           </ion-col>
         </ion-row>
       </form>
