@@ -31,3 +31,43 @@ ng new test_app
 
 9º Dudas
 
+## Clonar el repositorio
+
+```bash
+$ git clone https://github.com/eliesser/test_app
+```
+
+Posteriormente moverse al la carpeta con esta instrucción:
+
+```bash
+$ cd test_app
+```
+
+
+## Levantar el proyecto
+
+Una vez descargado el repositorio, para levantarlo puede lanzar el comando:
+
+Para poder agregarlo puede usar este comando:
+
+```bash
+$ ionic serve
+```
+
+Por defecto desplegara en esta dirección http://localhost:8100//
+
+## Pruebas unitarias
+Para ejecutar las pruebas unitarias puede hacerlo mediante el siguiente comando:
+
+```bash
+$ ng test
+```
+
+## Estadisticas de pruebas unitarias
+Para ejecutar las pruebas unitarias y poder visualizar las estadísticas, puede hacerlo mediante el siguiente comando:
+
+```bash
+$ ng test --code-coverage
+```
+Este comando generara un folder en el directorio raíz del proyecto deben navegar a "coverage/ngv/" y abrir el archivo index.html, donde presentara las estadísticas de los test unitarios
+
