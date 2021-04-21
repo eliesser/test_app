@@ -54,7 +54,7 @@ Para poder agregarlo puede usar este comando:
 $ ionic serve
 ```
 
-Por defecto desplegara en esta dirección http://localhost:8100//
+Por defecto desplegara en esta dirección http://localhost:8100/
 
 ## Pruebas unitarias
 Para ejecutar las pruebas unitarias puede hacerlo mediante el siguiente comando:
